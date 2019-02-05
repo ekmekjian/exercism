@@ -16,7 +16,7 @@ bool IsIsogram(char *str)
             if(i==j)
             {continue;}
             else if(*i==*j)
-            {;return false;}
+            {return false;}
          }
       }
       //return true if no duplicates were found

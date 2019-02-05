@@ -1,23 +1,25 @@
 #include <string.h>
 #include <stdio.h>
-char * acronymGen(char * str)
+char * acronymGen(char str[])
 {
-    char * acronym =NULL;
-    int len = strlen(str)+1;
-    char * i;
-    char strin[len];
-    for(i = str;*i;i++)
-    {
-        strcat(strin,i);
-    }
-   // printf("%c",strin[4]);
+    int len = strlen(str);
+    
+   for(int i=0;i<len;i++)
+   {
+    printf("%c",str[i]);   
+   }
+   printf("\n");
+    
     return "PNG";
 }
 
 int main()
 {
-    char * acron;
-     acron = acronymGen("Portable Network Graphics");
-    printf("%c",*acron);
+    char acron[50]= acronymGen("Portable Network Graphics");
+    for(int i =0;strlen(acron);i++)
+    {
+        printf("%c",acron[i]);
+    }
+    printf("\n");
     return 0;
 }
