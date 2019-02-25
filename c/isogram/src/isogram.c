@@ -5,6 +5,10 @@
 
 bool is_isogram(const char str[])
 {
+  if(str == NULL)
+  {
+    return false;
+  }
     bool isIso = true;
 //loop through each letter to find dupilcate
   	const char * i; 
@@ -25,3 +29,8 @@ bool is_isogram(const char str[])
       else {return false;}
  }
 
+
+ int main(){
+   boot truth = is_isogram(NULL);
+   printf("%d",truth);
+ }
