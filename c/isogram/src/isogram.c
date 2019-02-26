@@ -31,6 +31,6 @@ bool is_isogram(const char str[])
 
 
  int main(){
-   boot truth = is_isogram(NULL);
+   bool truth = is_isogram(NULL);
    printf("%d",truth);
  }
