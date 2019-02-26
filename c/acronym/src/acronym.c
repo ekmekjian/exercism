@@ -1,25 +1,34 @@
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 char * acronymGen(char str[])
 {
-    int len = strlen(str);
-    
-   for(int i=0;i<len;i++)
-   {
-    printf("%c",str[i]);   
-   }
-   printf("\n");
-    
-    return "PNG";
+    if(str == NULL)
+    {
+        return false;
+    }
+    //initialze array to pointer
+    const char * seperation;
+    char * acronym;
+    //use strtok to  string by space and hyphen
+    seperation = strtok(str," -");
+    //go through each word find the first letter then fill
+    while(seperation != NULL)
+    {
+        //Not sure if this is legal use of char pointer***
+        if(isupper(seperation[0]))
+            strcat(acronym,seperation[0]);
+        else
+            strcat(acronym,toupper(seperation[0]));
+        seperation = strtok(NULL," -");
+    }
+    //to acronym for return
+    return acronym;
 }
 
 int main()
 {
-    char acron[50]= acronymGen("Portable Network Graphics");
-    for(int i =0;strlen(acron);i++)
-    {
-        printf("%c",acron[i]);
-    }
-    printf("\n");
+    char * result;
+    result = acronymGen(NULL);
     return 0;
 }
