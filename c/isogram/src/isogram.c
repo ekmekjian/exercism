@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 
 bool is_isogram(const char str[])
 {
@@ -14,9 +15,17 @@ bool is_isogram(const char str[])
   	const char * i; 
     for(i=str;*i;i++)
     {
-		const char *j;
+	//check if its an actual letter and makes sure it's
+	//lower case
+	if(!isalpha(*i)
+	   {continue;}
+	if(isupper(*i)
+	   {tolower(*i);}
+	const char *j;
 	  for(j = str;*j;j++)
          {
+	    //check if loop is looking at the same character if
+	    //if it is skip this loop
             if(i==j)
             {continue;}
             else if(*i==*j)
