@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-char * acronymGen(char str[])
+char * acronymGen(const char str[])
 {
     if(str == NULL)
     {
