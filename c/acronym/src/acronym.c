@@ -9,22 +9,20 @@ char * acronymGen(char str[])
     }
     //initialze array to pointer
     char * acronym;
-    for(int i = 0; i<sizeof(str)/sizeof(char);i++)
+    char * i
+    token = strtok(str," -");
+    while(token !=NULL)
     {
-        //if its the first letter capitalize and add
-        //if its after a hyphen capitalize and add
-        //
-        if(!isalpha(str[i]))
-        continue;
-        else if(isupper(str[i]))
+        for(i=token;*i;i++)
         {
-            strcat(acronym,str[i]);
+            if(isalpha(*i))
+               {
+               }
         }
-        else if(!isalpha(str[i-1]))
-        {
-            strcat(acronym,toupper(str[i]));
-        }
+     
+        token - strtok(NULL," -");
     }
+   
     
     return acronym;
 }
