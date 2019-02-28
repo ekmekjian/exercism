@@ -10,7 +10,6 @@ bool is_isogram(const char str[])
   {
     return false;
   }
-    bool isIso = true;
 //loop through each letter to find dupilcate
   	const char * i; 
     for(i=str;*i;i++)
@@ -34,10 +33,7 @@ bool is_isogram(const char str[])
             {return false;}
          }
       }
-      //return true if no duplicates were found
-      if(isIso == true) {return true;}
-      //return false if nothing found
-      else {return false;}
+     
  }
 
 
