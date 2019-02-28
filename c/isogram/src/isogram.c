@@ -17,10 +17,8 @@ bool is_isogram(const char str[])
     {
 	//check if its an actual letter and makes sure it's
 	//lower case
-	if(!isalpha(*i)
+	if(!isalpha(*i))
 	   {continue;}
-	if(isupper(*i)
-	   {tolower(*i);}
 	const char *j;
 	  for(j = str;*j;j++)
          {
@@ -28,6 +26,10 @@ bool is_isogram(const char str[])
 	    //if it is skip this loop
             if(i==j)
             {continue;}
+            else if(isupper(*i))
+	          {if(tolower(*i)==*j){
+              return false;
+            }}
             else if(*i==*j)
             {return false;}
          }
@@ -39,7 +41,4 @@ bool is_isogram(const char str[])
  }
 
 
- int main(){
-   bool truth = is_isogram(NULL);
-   printf("%d",truth);
- }
+ 
