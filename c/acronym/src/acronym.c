@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-char * acronymGen(char str[])
+char * acronymGen(const char str[])
 {
     if(str == NULL)
     {
@@ -13,13 +13,11 @@ char * acronymGen(char str[])
     token = strtok(str," -");
     while(token !=NULL)
     {
-        for(i=token;*i;i++)
-        {
-            if(isalpha(*i))
-               {
-               }
-        }
-     
+       i = token; 
+       if(isupper(*i))
+         {
+          strcat(acronym,*i)
+         }
         token - strtok(NULL," -");
     }
    
