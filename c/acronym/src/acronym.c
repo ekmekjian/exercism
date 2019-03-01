@@ -20,7 +20,7 @@ char * abbreviate(const char str[])
        i = token; 
        if(isupper(*i))
          {
-          acronym += toupper(*i);
+          acronym += *i;
          }
         token = strtok(NULL," -");
     }
