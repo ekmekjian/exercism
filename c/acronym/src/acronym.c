@@ -17,7 +17,7 @@ char * abbreviate(const char str[])
     token = strtok(temp," -");
     while(token !=NULL)
     {
-       i = token; 
+       i = *token; 
        if(isupper(*i))
          {
           acronym += *i;
