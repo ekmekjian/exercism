@@ -33,6 +33,7 @@ bool is_isogram(const char str[])
             {return false;}
          }
       }
+      return true;
      
  }
 

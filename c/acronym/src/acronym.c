@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-char * acronymGen(const char str[])
+#include <stdlib.h>
+char * abbreviate(const char str[])
 {
     if(str == NULL)
     {
@@ -9,25 +10,29 @@ char * acronymGen(const char str[])
     }
     //initialze array to pointer
     char * acronym;
-    char * i
-    token = strtok(str," -");
+    char * i;
+    char * token;
+    char * temp=(char *)malloc(strlen(str)+1);
+    strcpy(temp,str);
+    token = strtok(temp," -");
     while(token !=NULL)
     {
        i = token; 
        if(isupper(*i))
          {
-          strcat(acronym,*i)
+          acronym += toupper(*i);
          }
-        token - strtok(NULL," -");
+        token = strtok(NULL," -");
     }
    
     
     return acronym;
 }
 
-//int main()
-//{
-//    char * result;
-//    result = acronymGen(NULL);
-//    return 0;
-//}
+int main()
+{
+    char * result;
+    result = abbreviate("Hello World");
+    printf("%c",*result);
+    return 0;
+}
