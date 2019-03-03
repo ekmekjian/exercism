@@ -10,18 +10,22 @@ char * abbreviate(const char str[])
     }
     //initialze array to pointer
     char * acronym;
-    char * i;
     char * token;
     char * temp=(char *)malloc(strlen(str)+1);
+    char holder = ' ';
     strcpy(temp,str);
     token = strtok(temp," -");
     while(token !=NULL)
     {
-       i = *token; 
-       if(isupper(*i))
+        holder = token[0];
+       if(isupper(holder))
          {
-          acronym += *i;
+          strcat(acronym,(char*)holder);
          }
+        else if(isalpha(holder))
+        {
+            strcat(acronym,(char*)toupper(holder));
+        }
         token = strtok(NULL," -");
     }
    
