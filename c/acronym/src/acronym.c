@@ -2,41 +2,41 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
-char * abbreviate(const char str[])
+char *dup (const char *s) {
+    char *d = malloc (strlen (s) + 1);   // Space for length plus nul
+    if (d == NULL) return NULL;          // No memory
+    strcpy (d,s);                        // Copy the characters
+    return d;                            // Return the new string
+}
+
+char * abbreviate(char * str)
 {
-    if(str == NULL)
+
+    if(str == NULL || str[0]=='\0')
     {
-        return "Invalid Entry";
+        return NULL;
     }
     //initialze array to pointer
-    char * acronym;
+    char * acronym=(char *)malloc(strlen(str)+1);
     char * token;
-    char * temp=(char *)malloc(strlen(str)+1);
+    char * temp=acronym;
     char holder = ' ';
-    strcpy(temp,str);
-    token = strtok(temp," -");
+    token = strtok(dup(str)," -");
     while(token !=NULL)
     {
         holder = token[0];
        if(isupper(holder))
          {
-          strcat(acronym,(char*)holder);
+          *temp++ = holder;
          }
-        else if(isalpha(holder))
+        else if(isalpha(holder)&&islower(holder))
         {
-            strcat(acronym,(char*)toupper(holder));
+            *temp++ = toupper(holder);
         }
         token = strtok(NULL," -");
     }
-   
+    temp="\0";
     
     return acronym;
 }
 
-int main()
-{
-    char * result;
-    result = abbreviate("Hello World");
-    printf("%c",*result);
-    return 0;
-}
