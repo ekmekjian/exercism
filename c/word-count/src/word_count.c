@@ -3,11 +3,25 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+
+void push(word_count_word_t * holder, char * word)
+{
+    size_t arrSize = sizeof(holder)/sizeof(holder[0]);
+    for(int i=0; i<arrSize;i++)
+    {
+        if(holder[i]==NULL)
+        {
+            holder[i].text = word;
+            holder[i].count = 0;
+        }
+    }
+}
+
 int word_count(const char *input_text, word_count_word_t * words)
 {
     int totalCount = 0;
     int uniquWords = 0;
-    char wordList[MAX_WORDS];
+    char wordList[MAX_WORDS][MAX_WORD_LENGTH+1];
     char * token;
     //Seperate each word in input_text to an array and words[index].text
     token = strtok(input_text," ");
@@ -30,32 +44,36 @@ int word_count(const char *input_text, word_count_word_t * words)
     size_t arrSize = sizeof(wordList)/sizeof(wordList[0]);
     size_t arrSize2 = sizeof(words)/sizeof(words[0]);
 
-      for(int i=0;i<totalCount;i++)
-      {
-          if(words[0].text==NULL)
-          {
-              words[0].text == wordList[i];
-          }
-          else
-          {
+    
               for(int i=0;i<arrSize;i++)
               {
+                   if(wordList[i]==NULL)
+                    {
+                        break;
+                    }
+                //if wordList[i] contains any special characters thats not allowed
+                //remove the special characters from the word and reinitialize it to the array
                   for(int j=0;j<arrSize2;j++)
                   {
                       //compare the two lists 
                       //if the word in wordList doesn't exit add to words and
                       //increment uniqueWords
-
-                      //if the world already exists in words then increment that words count
+                        if(words[0].text==NULL)
+                        {
+                            words[0].text == wordList[i];
+                        }
+                        else if(wordList[i] == words[j].text)
+                        {
+                            //if the world already exists in words then increment that words count
+                            words[j].count +=1;
+                        }
                   }
               }
                       
-          }
-      }
+          
+      
     return totalCount;
 }
-
-
 
 
 
