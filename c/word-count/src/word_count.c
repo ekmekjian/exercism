@@ -6,15 +6,14 @@
 
 void push(word_count_word_t * holder, char * word)
 {
-    size_t arrSize = sizeof(holder)/sizeof(holder[0]);
-    for(int i=0; i<arrSize;i++)
-    {
-        if(holder[i]==NULL)
+    
+        while(holder !=NULL)
         {
-            holder[i].text = word;
-            holder[i].count = 0;
+            *holder->text = word;
+            *holder->count = 0;
+            holder++:
         }
-    }
+
 }
 
 int word_count(const char *input_text, word_count_word_t * words)
@@ -74,6 +73,10 @@ int word_count(const char *input_text, word_count_word_t * words)
       
     return totalCount;
 }
+
+
+
+
 
 
 
