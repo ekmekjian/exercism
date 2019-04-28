@@ -9,7 +9,7 @@ void push(word_count_word_t * holder, const char * word)
     
        for(int i = 0; i<MAX_WORDS;i++)
        {
-           if(*holder==NULL){
+           if(holder==NULL){
             strcpy(holder->text,word);
             holder->count = 0;
             return;
@@ -31,7 +31,7 @@ int word_count(const char *input_text, word_count_word_t * words)
     int uniquWords = 0;
     char wordList[MAX_WORDS][MAX_WORD_LENGTH+1];
     char * token;
-    char *temp;
+    //char *temp;
     //Seperate each word in input_text to an array and words[index].text
     token = strtok(dup(input_text)," ");
     while(token !=NULL)
@@ -57,7 +57,7 @@ int word_count(const char *input_text, word_count_word_t * words)
      for(int i=0;i<arrSize;i++)
         {
           //if we reach the end of the list
-           if(wordList[i]==NULL)
+           if(wordList[i]=='\0')
             {
                 break;
             }
@@ -88,10 +88,16 @@ int word_count(const char *input_text, word_count_word_t * words)
                       
           
       
-    return totalCount;
+    return uniquWords;
 }
 
-
+int main ()
+{
+    int count=0;
+    word_count_word_t *test;
+    count = word_count(test,"word");
+    printf("%d",count);
+}
 
 
 
