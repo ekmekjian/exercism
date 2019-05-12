@@ -62,7 +62,7 @@ int word_count(const char *input_text, word_count_word_t * words)
                 break;
             }
            //if wordList[i] contains any special characters thats not allowed
-           //remove the special characters from the word and reinitialize it to the array               
+           //remove the special characters from the word and reinitialize it to the array     
           for(int j=0;j<MAX_WORDS;j++)
           {
               //compare the two lists 
