@@ -30,10 +30,13 @@ CHOICE = None # Sum of the edice
 
 def yacht(dice):
     temp = dice[0]
+    infull = 0
     for i in dice:
         if temp != i:
             return 0
-    return YACHT
+        infull+=1
+    if infull==5:    
+        return CD ..YACHT
 
 def ones(dice,num):
     score = 0
@@ -43,8 +46,10 @@ def ones(dice,num):
     return score
 
 def fullhouse(dice):
+    dice.sort()
     score = 0
-    infull = 0
+    threeside = False
+    twoside = False
     for i in dice:
         count = {}
         count[i]=0
@@ -55,11 +60,11 @@ def fullhouse(dice):
     for key,value in count.iteritems():
         if value ==3:
             score += (key*3)
-            infull +=1
+            threeside = True
         if value == 2:
             score += (key*2)
-            infull +=1
-    if(infull == 2):
+            twoside = True
+    if(threeside == True and twoside == True):
         return score
     else:
         return 0
@@ -69,8 +74,10 @@ def littlestraight(dice):
     if dice[0] != 1:
         return 0
     for i in range(len(dice)):
-        if((dice[i]+1)!=dice[i+1]):
-            return 0;
+        if (i+1) != len(dice):
+            if((dice[i]+1)!=dice[i+1]):
+                return 0;
+        
     return LITTLE_STRAIGHT
 
 def bigstraight(dice):
@@ -78,8 +85,9 @@ def bigstraight(dice):
     if dice[0]!=2:
         return 0
     for i in range(len(dice)):
-        if((dice[i]+1)!=dice[i+1]):
-            return 0;
+        if (i+1) != len(dice):
+            if((dice[i]+1)!=dice[i+1]):
+                return 0;
     return BIG_STRAIGHT
 
 def choice(dice):
@@ -112,7 +120,7 @@ def score(dice, category):
     'little_straight':littlestraight(dice),
     'big_straight':bigstraight(dice),
     'choice':choice(dice)}
-    score = option[category.lower()]
+    score = option.get(category)
     return score
 
-score([5,5,5,5,5],"yacht")
+print score([2,5,2,5,5],"full_house")
